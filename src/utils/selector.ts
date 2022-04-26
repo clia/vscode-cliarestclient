@@ -1,5 +1,5 @@
 import { EOL } from 'os';
-import { Range, TextEditor } from 'vscode';
+import { Position, Range, TextDocument, TextEditor, window } from 'vscode';
 import * as Constants from '../common/constants';
 import { fromString as ParseReqMetaKey, RequestMetadata } from '../models/requestMetadata';
 import { SelectedRequest } from '../models/SelectedRequest';
@@ -10,6 +10,11 @@ export interface RequestRangeOptions {
     ignoreEmptyLine?: boolean;
     ignoreFileVariableDefinitionLine?: boolean;
     ignoreResponseRange?: boolean;
+}
+
+interface PromptVariableDefinition {
+    name: string;
+    description?: string;
 }
 
 export class Selector {
@@ -23,7 +28,19 @@ export class Selector {
         let selectedText: string | null;
         if (editor.selection.isEmpty || range) {
             const activeLine = range?.start.line ?? editor.selection.active.line;
-            selectedText = this.getDelimitedText(editor.document.getText(), activeLine);
+            if (editor.document.languageId === 'markdown') {
+                selectedText = null;
+
+                for (const r of Selector.getMarkdownRestSnippets(editor.document)) {
+                    const snippetRange = new Range(r.start.line + 1, 0, r.end.line, 0);
+                    if (snippetRange.contains(new Position(activeLine, 0))) {
+                        selectedText = editor.document.getText(snippetRange);
+                    }
+                }
+
+            } else {
+                selectedText = this.getDelimitedText(editor.document.getText(), activeLine);
+            }
         } else {
             selectedText = editor.document.getText(editor.selection);
         }
@@ -38,6 +55,13 @@ export class Selector {
         // parse request metadata
         const metadatas = this.parseReqMetadatas(lines);
 
+        // process #@prompt comment metadata
+        const promptVariablesDefinitions = this.parsePromptMetadataForVariableDefinitions(metadatas.get(RequestMetadata.Prompt));
+        const promptVariables = await this.promptForInput(promptVariablesDefinitions);
+        if (!promptVariables) {
+            return null;
+        }
+
         // parse actual request lines
         const rawLines = lines.filter(l => !this.isCommentLine(l));
         const requestRange = this.getRequestRanges(rawLines)[0];
@@ -48,7 +72,7 @@ export class Selector {
         selectedText = rawLines.slice(requestRange[0], requestRange[1] + 1).join(EOL);
 
         // variables replacement
-        selectedText = await VariableProcessor.processRawRequest(selectedText);
+        selectedText = await VariableProcessor.processRawRequest(selectedText, promptVariables);
 
         return {
             text: selectedText,
@@ -78,7 +102,11 @@ export class Selector {
             const metaValue = matched[2];
             const metadata = ParseReqMetaKey(metaKey);
             if (metadata) {
-                metadatas.set(metadata, metaValue || undefined);
+                if (metadata === RequestMetadata.Prompt) {
+                    this.handlePromptMetadata(metadatas, line);
+                } else {
+                    metadatas.set(metadata, metaValue || undefined);
+                }
             }
         }
         return metadatas;
@@ -86,11 +114,12 @@ export class Selector {
 
     public static getRequestRanges(lines: string[], options?: RequestRangeOptions): [number, number][] {
         options = {
-                ignoreCommentLine: true,
-                ignoreEmptyLine: true,
-                ignoreFileVariableDefinitionLine: true,
-                ignoreResponseRange: true,
-            ...options};
+            ignoreCommentLine: true,
+            ignoreEmptyLine: true,
+            ignoreFileVariableDefinitionLine: true,
+            ignoreResponseRange: true,
+            ...options
+        };
         const requestRanges: [number, number][] = [];
         const delimitedLines = this.getDelimiterRows(lines);
         delimitedLines.push(lines.length);
@@ -153,7 +182,31 @@ export class Selector {
         return matched?.[1];
     }
 
-    private static getDelimitedText(fullText: string, currentLine: number): string | null {
+    public static getPrompVariableDefinition(text: string): PromptVariableDefinition | undefined {
+        const matched = text.match(Constants.PromptCommentRegex);
+        if (matched) {
+            const name = matched[1];
+            const description = matched[2];
+            return { name, description };
+        }
+    }
+
+    public static parsePromptMetadataForVariableDefinitions(text: string | undefined) : PromptVariableDefinition[] {
+        const varDefs : PromptVariableDefinition[] = [];
+        const parsedDefs = JSON.parse(text || "[]");
+        if (Array.isArray(parsedDefs)) {
+            for (const parsedDef of parsedDefs) {
+                varDefs.push({
+                    name: parsedDef['name'],
+                    description: parsedDef['description']
+                });
+            }
+        }
+
+        return varDefs;
+    }
+
+    public static getDelimitedText(fullText: string, currentLine: number): string | null {
         const lines: string[] = fullText.split(Constants.LineSplitterRegex);
         const delimiterLineNumbers: number[] = this.getDelimiterRows(lines);
         if (delimiterLineNumbers.length === 0) {
@@ -189,4 +242,55 @@ export class Selector {
             .filter(([, value]) => /^#{3,}/.test(value))
             .map(([index, ]) => +index);
     }
+
+    public static* getMarkdownRestSnippets(document: TextDocument): Generator<Range> {
+        const snippetStartRegx = new RegExp('^\`\`\`(' + ['http', 'rest'].join('|') + ')$');
+        const snippetEndRegx = /^\`\`\`$/;
+
+        let snippetStart: number | null = null;
+        for (let i = 0; i < document.lineCount; i++) {
+            const lineText = document.lineAt(i).text;
+
+            const matchEnd = lineText.match(snippetEndRegx);
+            if (snippetStart !== null && matchEnd) {
+                const snippetEnd = i;
+
+                const range = new Range(snippetStart, 0, snippetEnd, 0);
+                yield range;
+
+                snippetStart = null;
+            } else {
+                const matchStart = lineText.match(snippetStartRegx);
+                if (matchStart) {
+                    snippetStart = i;
+                }
+            }
+        }
+    }
+
+    private static handlePromptMetadata(metadatas: Map<RequestMetadata, string | undefined> , text: string) {
+        const promptVarDef = this.getPrompVariableDefinition(text);
+        if (promptVarDef) {
+            const varDefs = this.parsePromptMetadataForVariableDefinitions(metadatas.get(RequestMetadata.Prompt));
+            varDefs.push(promptVarDef);
+            metadatas.set(RequestMetadata.Prompt, JSON.stringify(varDefs));
+        }
+    }
+
+    private static async promptForInput(defs: PromptVariableDefinition[]): Promise<Map<string, string> | null> {
+        const promptVariables = new Map<string, string>();
+        for (const { name, description } of defs) {
+            const value = await window.showInputBox({
+                prompt: `Input value for "${name}"`,
+                placeHolder: description
+            });
+            if (value !== undefined) {
+                promptVariables.set(name, value);
+            } else {
+                return null;
+            }
+        }
+        return promptVariables;
+    }
+
 }
