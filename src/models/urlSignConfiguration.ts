@@ -1,6 +1,6 @@
 export type UrlSignConfiguration = {
     enableUrlSign: boolean,
-    // See aliyun sign algo: https://help.aliyun.com/document_detail/30563.htm
+    // See aliyun's sign algorithm: https://help.aliyun.com/document_detail/30563.htm
     algorithm: {
         // Step 1: Canonicalized Query String
         step1OrderParams: boolean;

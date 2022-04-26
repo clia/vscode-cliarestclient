@@ -4,7 +4,7 @@ import * as path from 'path';
 import { HistoricalHttpRequest } from '../models/httpRequest';
 import { JsonFileUtility } from './jsonFileUtility';
 
-const restClientDir = 'rest-client';
+const restClientDir = 'clia-rest-client';
 const rootPath = path.join(os.homedir(), `.${restClientDir}`);
 
 function getCachePath(): string {

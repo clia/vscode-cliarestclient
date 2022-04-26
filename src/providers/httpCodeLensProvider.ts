@@ -13,7 +13,7 @@ export class HttpCodeLensProvider implements CodeLensProvider {
             const cmd: Command = {
                 arguments: [document, range],
                 title: 'Send Request',
-                command: 'rest-client.request'
+                command: 'clia-rest-client.request'
             };
             blocks.push(new CodeLens(range, cmd));
         }

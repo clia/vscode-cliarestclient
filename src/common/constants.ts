@@ -1,8 +1,8 @@
 
-export const ExtensionId: string = 'humao.rest-client';
-export const AiKey: string = 'ad746e27-4a36-441c-8b94-5db178f81ae3';
+export const ExtensionId: string = 'clia.clia-rest-client';
+export const AiKey: string = 'b08707eb-8911-44c0-955e-5010ed9f45e6';
 
-export const NoEnvironmentSelectedName: string = 'c0cfe680-4fcd-4b71-a4ba-8cfaee57680a';
+export const NoEnvironmentSelectedName: string = '29e83c47-00a9-4882-90b5-ef42b1fb5784';
 
 export const TimeStampVariableName = "$timestamp";
 export const TimeStampVariableDescription = "Add a number of milliseconds between 1970/1/1 UTC Time and now. \
@@ -30,7 +30,7 @@ export const AzureActiveDirectoryV2TokenDescription = "Prompts to sign in to Azu
  * authorizing the right app to act on their behalf. We're using Visual Studio Code's client id since that is the
  * overarching app people will think of when they are signing in.
  */
-export const AzureActiveDirectoryClientId = "aebc6443-996d-45c2-90f0-388ff96faa56";
+export const AzureActiveDirectoryClientId = "70a38833-31df-4a0d-b85b-71f5d46ecbec";
 export const AzureActiveDirectoryForceNewOption = "new";
 export const AzureActiveDirectoryDefaultTenantId = "common";
 export const AzureActiveDirectoryDefaultDisplayName = "Default Directory";

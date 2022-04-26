@@ -1,12 +1,12 @@
 {
-  "name": "rest-client",
-  "displayName": "REST Client",
-  "description": "REST Client for Visual Studio Code",
-  "version": "0.24.6",
-  "publisher": "humao",
+  "name": "clia-rest-client",
+  "displayName": "Clia REST Client",
+  "description": "REST Client for Visual Studio Code with URL Signature",
+  "version": "0.25.0",
+  "publisher": "clia",
   "author": {
-    "name": "Huachao Mao",
-    "email": "huachaomao@gmail.com"
+    "name": "Cris Liao",
+    "email": "clia@163.com"
   },
   "icon": "images/rest_icon.png",
   "galleryBanner": {
@@ -15,13 +15,13 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Huachao/vscode-restclient/issues",
-    "email": "huachaomao@gmail.com"
+    "url": "https://github.com/clia/vscode-cliarestclient/issues",
+    "email": "clia@163.com"
   },
-  "homepage": "https://github.com/Huachao/vscode-restclient/blob/master/README.md",
+  "homepage": "https://github.com/clia/vscode-cliarestclient/blob/master/README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Huachao/vscode-restclient.git"
+    "url": "https://github.com/clia/vscode-cliarestclient.git"
   },
   "engines": {
     "vscode": "^1.57.0"
@@ -39,21 +39,21 @@
     "multi-root ready"
   ],
   "activationEvents": [
-    "onCommand:rest-client.request",
-    "onCommand:rest-client.history",
-    "onCommand:rest-client.clear-history",
-    "onCommand:rest-client.save-response",
-    "onCommand:rest-client.save-response-body",
-    "onCommand:rest-client.copy-response-body",
-    "onCommand:rest-client.switch-environment",
-    "onCommand:rest-client.clear-aad-token-cache",
-    "onCommand:rest-client.cancel-request",
-    "onCommand:rest-client.rerun-last-request",
-    "onCommand:rest-client.generate-codesnippet",
-    "onCommand:rest-client.copy-codesnippet",
-    "onCommand:rest-client.copy-request-as-curl",
-    "onCommand:rest-client.fold-response",
-    "onCommand:rest-client.unfold-response",
+    "onCommand:clia-rest-client.request",
+    "onCommand:clia-rest-client.history",
+    "onCommand:clia-rest-client.clear-history",
+    "onCommand:clia-rest-client.save-response",
+    "onCommand:clia-rest-client.save-response-body",
+    "onCommand:clia-rest-client.copy-response-body",
+    "onCommand:clia-rest-client.switch-environment",
+    "onCommand:clia-rest-client.clear-aad-token-cache",
+    "onCommand:clia-rest-client.cancel-request",
+    "onCommand:clia-rest-client.rerun-last-request",
+    "onCommand:clia-rest-client.generate-codesnippet",
+    "onCommand:clia-rest-client.copy-codesnippet",
+    "onCommand:clia-rest-client.copy-request-as-curl",
+    "onCommand:clia-rest-client.fold-response",
+    "onCommand:clia-rest-client.unfold-response",
     "onLanguage:http",
     "onLanguage:markdown"
   ],
@@ -90,37 +90,37 @@
     ],
     "commands": [
       {
-        "command": "rest-client.request",
+        "command": "clia-rest-client.request",
         "title": "Send Request",
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.rerun-last-request",
+        "command": "clia-rest-client.rerun-last-request",
         "title": "Rerun Last Request",
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.cancel-request",
+        "command": "clia-rest-client.cancel-request",
         "title": "Cancel Request",
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.switch-environment",
+        "command": "clia-rest-client.switch-environment",
         "title": "Switch Environment",
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.history",
+        "command": "clia-rest-client.history",
         "title": "View Request History",
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.clear-history",
+        "command": "clia-rest-client.clear-history",
         "title": "Clear Request History",
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.save-response",
+        "command": "clia-rest-client.save-response",
         "title": "Save Full Response",
         "icon": {
           "light": "./images/save.svg",
@@ -129,7 +129,7 @@
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.save-response-body",
+        "command": "clia-rest-client.save-response-body",
         "title": "Save Response Body",
         "icon": {
           "light": "./images/save-body.svg",
@@ -138,7 +138,7 @@
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.copy-response-body",
+        "command": "clia-rest-client.copy-response-body",
         "title": "Copy Response Body",
         "icon": {
           "light": "./images/copy.svg",
@@ -147,12 +147,12 @@
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.generate-codesnippet",
+        "command": "clia-rest-client.generate-codesnippet",
         "title": "Generate Code Snippet",
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.copy-codesnippet",
+        "command": "clia-rest-client.copy-codesnippet",
         "title": "Copy Code Snippet",
         "icon": {
           "light": "./images/copy.svg",
@@ -161,22 +161,22 @@
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.copy-request-as-curl",
+        "command": "clia-rest-client.copy-request-as-curl",
         "title": "Copy Request As cURL",
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.clear-aad-token-cache",
+        "command": "clia-rest-client.clear-aad-token-cache",
         "title": "Clear Azure AD Token Cache",
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.fold-response",
+        "command": "clia-rest-client.fold-response",
         "title": "Fold Response",
         "category": "Rest Client"
       },
       {
-        "command": "rest-client.unfold-response",
+        "command": "clia-rest-client.unfold-response",
         "title": "Unfold Response",
         "category": "Rest Client"
       }
@@ -184,141 +184,141 @@
     "menus": {
       "commandPalette": [
         {
-          "command": "rest-client.fold-response",
+          "command": "clia-rest-client.fold-response",
           "when": "httpResponsePreviewFocus"
         },
         {
-          "command": "rest-client.unfold-response",
+          "command": "clia-rest-client.unfold-response",
           "when": "httpResponsePreviewFocus"
         },
         {
-          "command": "rest-client.save-response",
+          "command": "clia-rest-client.save-response",
           "when": "httpResponsePreviewFocus"
         },
         {
-          "command": "rest-client.save-response-body",
+          "command": "clia-rest-client.save-response-body",
           "when": "httpResponsePreviewFocus"
         },
         {
-          "command": "rest-client.copy-response-body",
+          "command": "clia-rest-client.copy-response-body",
           "when": "httpResponsePreviewFocus"
         },
         {
-          "command": "rest-client.copy-codesnippet",
+          "command": "clia-rest-client.copy-codesnippet",
           "when": "codeSnippetPreviewFocus"
         }
       ],
       "editor/title": [
         {
           "when": "httpResponsePreviewFocus",
-          "command": "rest-client.save-response",
+          "command": "clia-rest-client.save-response",
           "group": "navigation@1"
         },
         {
           "when": "httpResponsePreviewFocus",
-          "command": "rest-client.save-response-body",
+          "command": "clia-rest-client.save-response-body",
           "group": "navigation@2"
         },
         {
           "when": "httpResponsePreviewFocus",
-          "command": "rest-client.copy-response-body",
+          "command": "clia-rest-client.copy-response-body",
           "group": "navigation@3"
         },
         {
           "when": "httpResponsePreviewFocus",
-          "command": "rest-client.fold-response",
+          "command": "clia-rest-client.fold-response",
           "group": "1_rest-client@1"
         },
         {
           "when": "httpResponsePreviewFocus",
-          "command": "rest-client.unfold-response",
+          "command": "clia-rest-client.unfold-response",
           "group": "1_rest-client@2"
         },
         {
           "when": "codeSnippetPreviewFocus",
-          "command": "rest-client.copy-codesnippet",
+          "command": "clia-rest-client.copy-codesnippet",
           "group": "navigation"
         }
       ],
       "editor/context": [
         {
-          "command": "rest-client.request",
+          "command": "clia-rest-client.request",
           "when": "editorTextFocus && editorLangId == http",
-          "group": "rest-client@1"
+          "group": "clia-rest-client@1"
         },
         {
-          "command": "rest-client.generate-codesnippet",
+          "command": "clia-rest-client.generate-codesnippet",
           "when": "editorTextFocus && editorLangId == http",
-          "group": "rest-client@2"
+          "group": "clia-rest-client@2"
         },
         {
-          "command": "rest-client.copy-request-as-curl",
+          "command": "clia-rest-client.copy-request-as-curl",
           "when": "editorTextFocus && editorLangId == http",
-          "group": "rest-client@3"
+          "group": "clia-rest-client@3"
         }
       ]
     },
     "keybindings": [
       {
-        "command": "rest-client.request",
+        "command": "clia-rest-client.request",
         "key": "ctrl+alt+r",
         "mac": "cmd+alt+r",
         "when": "editorTextFocus && editorLangId == 'http'"
       },
       {
-        "command": "rest-client.request",
+        "command": "clia-rest-client.request",
         "key": "ctrl+alt+r",
         "mac": "cmd+alt+r",
         "when": "editorTextFocus && editorLangId == 'plaintext'"
       },
       {
-        "command": "rest-client.rerun-last-request",
+        "command": "clia-rest-client.rerun-last-request",
         "key": "ctrl+alt+l",
         "mac": "cmd+alt+l",
         "when": "editorTextFocus && editorLangId == 'http'"
       },
       {
-        "command": "rest-client.rerun-last-request",
+        "command": "clia-rest-client.rerun-last-request",
         "key": "ctrl+alt+l",
         "mac": "cmd+alt+l",
         "when": "editorTextFocus && editorLangId == 'plaintext'"
       },
       {
-        "command": "rest-client.rerun-last-request",
+        "command": "clia-rest-client.rerun-last-request",
         "key": "ctrl+alt+l",
         "mac": "cmd+alt+l",
         "when": "httpResponsePreviewFocus"
       },
       {
-        "command": "rest-client.cancel-request",
+        "command": "clia-rest-client.cancel-request",
         "key": "ctrl+alt+k",
         "mac": "cmd+alt+k",
         "when": "editorTextFocus && editorLangId == 'http'"
       },
       {
-        "command": "rest-client.cancel-request",
+        "command": "clia-rest-client.cancel-request",
         "key": "ctrl+alt+k",
         "mac": "cmd+alt+k",
         "when": "editorTextFocus && editorLangId == 'plaintext'"
       },
       {
-        "command": "rest-client.history",
+        "command": "clia-rest-client.history",
         "key": "ctrl+alt+h",
         "mac": "cmd+alt+h"
       },
       {
-        "command": "rest-client.switch-environment",
+        "command": "clia-rest-client.switch-environment",
         "key": "ctrl+alt+e",
         "mac": "cmd+alt+e"
       },
       {
-        "command": "rest-client.generate-codesnippet",
+        "command": "clia-rest-client.generate-codesnippet",
         "key": "ctrl+alt+c",
         "mac": "cmd+alt+c",
         "when": "editorTextFocus && editorLangId == 'http'"
       },
       {
-        "command": "rest-client.generate-codesnippet",
+        "command": "clia-rest-client.generate-codesnippet",
         "key": "ctrl+alt+c",
         "mac": "cmd+alt+c",
         "when": "editorTextFocus && editorLangId == 'plaintext'"
@@ -326,15 +326,15 @@
     ],
     "configuration": {
       "type": "object",
-      "title": "REST Client",
+      "title": "Clia REST Client",
       "properties": {
-        "rest-client.followredirect": {
+        "clia-rest-client.followredirect": {
           "type": "boolean",
           "default": true,
           "scope": "resource",
           "description": "Follow HTTP 3xx responses as redirects."
         },
-        "rest-client.defaultHeaders": {
+        "clia-rest-client.defaultHeaders": {
           "type": "object",
           "default": {
             "User-Agent": "vscode-restclient"
@@ -342,54 +342,54 @@
           "scope": "resource",
           "description": "If particular headers are omitted in request headers, these will be added as headers for each request."
         },
-        "rest-client.timeoutinmilliseconds": {
+        "clia-rest-client.timeoutinmilliseconds": {
           "type": "integer",
           "default": 0,
           "scope": "resource",
           "description": "Timeout in milliseconds. 0 for infinity"
         },
-        "rest-client.showResponseInDifferentTab": {
+        "clia-rest-client.showResponseInDifferentTab": {
           "type": "boolean",
           "default": false,
           "scope": "resource",
           "description": "Show response in different tab"
         },
-        "rest-client.requestNameAsResponseTabTitle": {
+        "clia-rest-client.requestNameAsResponseTabTitle": {
           "type": "boolean",
           "default": false,
           "scope": "resource",
           "description": "Show request name as the response tab title"
         },
-        "rest-client.rememberCookiesForSubsequentRequests": {
+        "clia-rest-client.rememberCookiesForSubsequentRequests": {
           "type": "boolean",
           "default": true,
           "scope": "resource",
           "description": "Remember cookies for subsequent requests"
         },
-        "rest-client.enableTelemetry": {
+        "clia-rest-client.enableTelemetry": {
           "type": "boolean",
           "default": true,
           "scope": "resource",
           "description": "Send out anonymous usage data"
         },
-        "rest-client.excludeHostsForProxy": {
+        "clia-rest-client.excludeHostsForProxy": {
           "type": "array",
           "default": [],
           "scope": "resource",
           "description": "Excluded hosts when using using proxy settings"
         },
-        "rest-client.fontSize": {
+        "clia-rest-client.fontSize": {
           "type": "number",
           "scope": "resource",
           "markdownDescription": "Controls the font size in pixels used in the response preview. When set to `0`, the value of `#editor.fontSize#` is used."
         },
-        "rest-client.fontFamily": {
+        "clia-rest-client.fontFamily": {
           "type": "string",
           "default": null,
           "scope": "resource",
           "description": "Controls the font family used in the response preview"
         },
-        "rest-client.fontWeight": {
+        "clia-rest-client.fontWeight": {
           "type": "string",
           "enum": [
             "normal",
@@ -409,7 +409,7 @@
           "scope": "resource",
           "description": "Controls the font weight used in the response preview"
         },
-        "rest-client.environmentVariables": {
+        "clia-rest-client.environmentVariables": {
           "type": "object",
           "default": {
             "$shared": {}
@@ -434,7 +434,7 @@
             ]
           }
         },
-        "rest-client.mimeAndFileExtensionMapping": {
+        "clia-rest-client.mimeAndFileExtensionMapping": {
           "type": "object",
           "default": {},
           "scope": "resource",
@@ -447,13 +447,13 @@
           },
           "markdownDescription": "Sets the custom mapping of mime type and file extension of saved response body (e.g., `{\"application/atom+xml\": \"xml\"}`)"
         },
-        "rest-client.previewResponseInUntitledDocument": {
+        "clia-rest-client.previewResponseInUntitledDocument": {
           "type": "boolean",
           "default": false,
           "scope": "resource",
           "description": "Preview response in untitled document if set to true, otherwise displayed in html view"
         },
-        "rest-client.certificates": {
+        "clia-rest-client.certificates": {
           "type": "object",
           "default": {},
           "scope": "resource",
@@ -495,13 +495,13 @@
             ]
           }
         },
-        "rest-client.suppressResponseBodyContentTypeValidationWarning": {
+        "clia-rest-client.suppressResponseBodyContentTypeValidationWarning": {
           "type": "boolean",
           "default": false,
           "scope": "resource",
           "description": "Suppress response body content type validation"
         },
-        "rest-client.previewOption": {
+        "clia-rest-client.previewOption": {
           "type": "string",
           "enum": [
             "full",
@@ -519,27 +519,27 @@
           "scope": "resource",
           "description": "Response preview output option"
         },
-        "rest-client.disableHighlightResonseBodyForLargeResponse": {
+        "clia-rest-client.disableHighlightResonseBodyForLargeResponse": {
           "type": "boolean",
           "default": true,
           "scope": "resource",
-          "markdownDescription": "Controls whether to highlight response body for response whose size is larger than limit specified by `rest-client.largeResponseSizeLimitInMB`"
+          "markdownDescription": "Controls whether to highlight response body for response whose size is larger than limit specified by `clia-rest-client.largeResponseSizeLimitInMB`"
         },
-        "rest-client.disableAddingHrefLinkForLargeResponse": {
+        "clia-rest-client.disableAddingHrefLinkForLargeResponse": {
           "type": "boolean",
           "default": true,
           "scope": "resource",
-          "markdownDescription": "Controls whether to add href link in previewed response for response whose size is larger than limit specified by `rest-client.largeResponseSizeLimitInMB`"
+          "markdownDescription": "Controls whether to add href link in previewed response for response whose size is larger than limit specified by `clia-rest-client.largeResponseSizeLimitInMB`"
         },
-        "rest-client.largeResponseBodySizeLimitInMB": {
+        "clia-rest-client.largeResponseBodySizeLimitInMB": {
           "type": "number",
           "default": 5,
           "minimum": 0,
           "exclusiveMinimum": true,
           "scope": "resource",
-          "markdownDescription": "Set the response body size threshold of MB to identify whether a response is a so-called 'large response', only used when `rest-client.disableHighlightResonseBodyForLargeResponse` and/or `rest-client.disableAddingHrefLinkForLargeResponse` is set to true"
+          "markdownDescription": "Set the response body size threshold of MB to identify whether a response is a so-called 'large response', only used when `clia-rest-client.disableHighlightResonseBodyForLargeResponse` and/or `clia-rest-client.disableAddingHrefLinkForLargeResponse` is set to true"
         },
-        "rest-client.previewColumn": {
+        "clia-rest-client.previewColumn": {
           "type": "string",
           "enum": [
             "current",
@@ -553,13 +553,13 @@
           "scope": "resource",
           "description": "Response preview column option"
         },
-        "rest-client.previewResponsePanelTakeFocus": {
+        "clia-rest-client.previewResponsePanelTakeFocus": {
           "type": "boolean",
           "default": true,
           "scope": "resource",
           "description": "Preview response panel will take focus after receiving response."
         },
-        "rest-client.formParamEncodingStrategy": {
+        "clia-rest-client.formParamEncodingStrategy": {
           "type": "string",
           "enum": [
             "automatic",
@@ -575,19 +575,19 @@
           "scope": "resource",
           "markdownDescription": "Form param encoding strategy for request body of `x-www-form-urlencoded`."
         },
-        "rest-client.addRequestBodyLineIndentationAroundBrackets": {
+        "clia-rest-client.addRequestBodyLineIndentationAroundBrackets": {
           "type": "boolean",
           "default": true,
           "scope": "resource",
           "markdownDescription": "Add line indentation around brackets(`{}`, `<>`, `[]`) in request body when pressing enter."
         },
-        "rest-client.decodeEscapedUnicodeCharacters": {
+        "clia-rest-client.decodeEscapedUnicodeCharacters": {
           "type": "boolean",
           "default": false,
           "scope": "resource",
           "description": "Decode escaped unicode characters in response body."
         },
-        "rest-client.logLevel": {
+        "clia-rest-client.logLevel": {
           "type": "string",
           "enum": [
             "error",
@@ -599,22 +599,22 @@
           "scope": "resource",
           "description": "The verbosity of logging in the REST output panel"
         },
-        "rest-client.enableSendRequestCodeLens": {
+        "clia-rest-client.enableSendRequestCodeLens": {
           "type": "boolean",
           "default": true,
           "scope": "resource",
           "description": "Enable/disable sending request CodeLens in request file"
         },
-        "rest-client.enableCustomVariableReferencesCodeLens": {
+        "clia-rest-client.enableCustomVariableReferencesCodeLens": {
           "type": "boolean",
           "default": true,
           "scope": "resource",
           "description": "Enable/disable custom variable references CodeLens in request file"
         },
-        "rest-client.urlSignConfiguration": {
+        "clia-rest-client.urlSignConfiguration": {
           "type": "object",
           "default": {
-            "enableUrlSign": false,
+            "enableUrlSign": true,
             "algorithm": {
               "step1OrderParams": true,
               "step1UrlEncodeParams": true,
@@ -635,7 +635,7 @@
           "scope": "resource",
           "markdownDescription": "Sets the URL Signature configuration"
         },
-        "rest-client.urlSignKeySecrets": {
+        "clia-rest-client.urlSignKeySecrets": {
           "type": "object",
           "default": {},
           "scope": "resource",
@@ -648,7 +648,7 @@
           },
           "markdownDescription": "Sets the key and secret pairs for URL Signature"
         },
-        "rest-client.useContentDispositionFilename": {
+        "clia-rest-client.useContentDispositionFilename": {
           "type": "boolean",
           "default": true,
           "scope": "resource",

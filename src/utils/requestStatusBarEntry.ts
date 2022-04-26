@@ -50,7 +50,7 @@ export class RequestStatusEntry {
                 break;
 
             case RequestState.Pending:
-                this.showDurationEntry('$(sync~spin) Waiting...', 'Click to cancel', 'rest-client.cancel-request');
+                this.showDurationEntry('$(sync~spin) Waiting...', 'Click to cancel', 'clia-rest-client.cancel-request');
                 break;
 
             case RequestState.Cancelled:

@@ -7,7 +7,7 @@ import { EnvironmentVariableProvider } from './httpVariableProviders/environment
 /*
  AppId provisioned to allow users to explicitly consent to permissions that this app can call
 */
-const AadV2TokenProviderClientId = "07f0a107-95c1-41ad-8f13-912eab68b93f";
+const AadV2TokenProviderClientId = "70a38833-31df-4a0d-b85b-71f5d46ecbec";
 
 export class AadV2TokenProvider {
     private readonly _httpClient: HttpClient;

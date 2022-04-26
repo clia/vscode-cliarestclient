@@ -256,7 +256,7 @@ export class SystemSettings implements IRestClientSettings {
 
     private initializeSettings() {
         const document = getCurrentTextDocument();
-        const restClientSettings = workspace.getConfiguration("rest-client", document?.uri);
+        const restClientSettings = workspace.getConfiguration("clia-rest-client", document?.uri);
         this._followRedirect = restClientSettings.get<boolean>("followredirect", true);
         this._defaultHeaders = restClientSettings.get<RequestHeaders>("defaultHeaders",
                                                                      {
