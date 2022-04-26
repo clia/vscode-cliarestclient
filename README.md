@@ -12,9 +12,9 @@ The signature algorithm is configurable. Configuration contains two parts:
 - `Url Sign Configuration`: Configuration for the signature algorithm and names.
 - `Url Sign Key Secrets`: Key and secret pairs for use.
 
-You should enable it in the configuration if you want to use this function, the default is disabled.
+You should disable it in the configuration if you don't want to use this function, the default is enabled.
 
-The default configuration is our use case.
+The default configuration is our's use case.
 
 An example AliYun's signature algorithm configuration:
 
@@ -39,3 +39,7 @@ An example AliYun's signature algorithm configuration:
     "signParamName": "Signature"
 }
 ```
+
+step3ComputeAlgorithm supports: `md5` | `hmacsha1`
+
+step3TextAlgorithm supports: `hex` | `base64`
