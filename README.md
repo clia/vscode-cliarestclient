@@ -2,6 +2,8 @@
 
 Clia REST Client is a personal temporary VSCode plugin, forked from [REST Client](https://github.com/Huachao/vscode-restclient), Thanks!
 
+[使用说明](https://my.oschina.net/u/1461794/blog/5523393)
+
 ## Added Features
 
 ### URL Signature
